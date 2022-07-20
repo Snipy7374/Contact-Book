@@ -12,7 +12,7 @@ You can find all required libraries and versions in [Requirements.txt](https://g
 
 # Example database structure
 ```
-ContactBookDB       # Actually the real Cluster
+| ContactBookDB       # Actually the real Cluster
 | -- ContactBook    # Database name
 |   |-- Contact     # Collection
 ```
