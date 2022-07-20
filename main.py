@@ -44,9 +44,6 @@ class myDatabase:
 
 db = myDatabase("ContactBook", "Contact")
 
-#docs
-#https://www.w3schools.com/python/python_mongodb_insert.asp
-#https://www.mongodb.com/docs/manual/core/databases-and-collections/
 
 class contactBook:
   def __init__(self):
