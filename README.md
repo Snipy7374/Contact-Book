@@ -4,7 +4,7 @@
 **Python 3.5 or higher is required.**
 To install the repository you can run the following command:
 ```
-pip install git+https://github.com/jkbr/Contact-Book.git#egg=Contact-Book
+pip install git+https://github.com/Snipy7374/Contact-Book.git#egg=Contact-Book
 ```
 
 # Requirements
