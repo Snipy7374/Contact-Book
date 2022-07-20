@@ -163,15 +163,15 @@ class contactBook:
       print("Something went wrong on modify contact func")
 
 while True:
-  men = contactBook().menu()
-  if men == '1':
+  option = contactBook().menu()
+  if option == '1':
     contactBook().search_contact()
-  elif men == '2':
+  elif option == '2':
     contactBook().add_contact()
-  elif men == '3':
+  elif option == '3':
     contactBook().modify_contact()
-  elif men == '4':
+  elif option == '4':
     contactBook().remove_contact()
-  elif men == '5':
+  elif option == '5':
     print("Exiting the program")
     break
