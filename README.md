@@ -17,7 +17,7 @@ ContactBookDB       # Actually the real Cluster
 |   |-- Contact     # Collection
 ```
 
-#Example of documents
+# Example of documents
 ```py
 {
   _id: ObjectId("..."),
