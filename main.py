@@ -1,5 +1,5 @@
 # Contact book project
-from .my_database import MyDatabase
+from my_database import MyDatabase
 
 db = MyDatabase("ContactBook", "Contact")
 
