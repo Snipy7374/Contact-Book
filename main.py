@@ -1,5 +1,6 @@
 # Contact book project
 from my_database import MyDatabase
+from errors import InvalidOption
 
 db = MyDatabase("ContactBook", "Contact")
 
@@ -91,8 +92,11 @@ class ContactBook:
       choose = int(choose)
     except:
       print("Invalid input, you need to write a number to pick a contact")
-    
-    picked_contact = results[choose]
+
+    try:
+      picked_contact = results[choose]
+    except:
+      raise InvalidOption(f"There's no contact with '{choose}' as number option")
 
     print(f"This contact will be modified\nName: {picked_contact['name']}\nSurname: {picked_contact['surname']}\nPhone number: {picked_contact['number']}\nEmail: {picked_contact['email']}")
     print("\nGetting the new information")
