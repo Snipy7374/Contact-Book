@@ -1,51 +1,9 @@
 # Contact book project
-import pymongo
-import os
+from .my_database import MyDatabase
 
-class myDatabase:
-  
-  def __init__(self, db_name, collection_name) -> None:
-    self.username = os.environ['username']
-    self.password = os.environ['password']
-    self.db_name = db_name
-    self.collection_name = collection_name
+db = MyDatabase("ContactBook", "Contact")
 
-  def _get_connection(self):
-    client = pymongo.MongoClient(f"mongodb+srv://{self.username}:{self.password}@contactbookdb.lckvbig.mongodb.net/?retryWrites=true&w=majority")
-    return client
-
-  def _get_db(self):
-    return self._get_connection()[f"{self.db_name}"]
-
-  def _get_collection(self):
-    return self._get_db()[f"{self.collection_name}"]
-
-  def insert_doc(self, documents):
-    return self._get_collection().insert_one(documents)
-
-  def insert_many_doc(self, ls):
-    return self._get_collection().insert_many(ls)
-
-  def find(self, query):
-    return self._get_collection().find(query)
-
-  def update_doc(self, query, doc):
-    return self._get_collection().update_one(query, doc)
-
-  def replace_doc(self, query, doc):
-    return self._get_collection().replace_one(query, doc)
-
-  def delete_doc(self, query):
-    return self._get_collection().delete_one(query)
-
-  def delete_many_doc(self, query):
-    return self._get_collection().delete_many(query)
-
-
-db = myDatabase("ContactBook", "Contact")
-
-
-class contactBook:
+class ContactBook:
   def __init__(self):
     pass
   
@@ -71,18 +29,18 @@ class contactBook:
 
   def remove_contact(self):
     print("\nRemoving a contact by\n1- Name & Surname\n2- Phone number\n3- Email")
-    option = input()
-    if option.strip() == '1':
+    option = input().strip()
+    if option == '1':
       name = input("Name: ")
       surname = input("Surname: ")
       query = {
         "name": name,
         "surname": surname
       }
-    elif option.strip() == '2':
+    elif option == '2':
       phone_number = input("Phone number: ")
       query = {"number": phone_number}
-    elif option.strip() == '3':
+    elif option == '3':
       email = input("Email: ")
       query = {"email": email}
 
@@ -95,21 +53,21 @@ class contactBook:
 
   def search_contact(self):
     print("\nSearching a contact by\n1- Name\n2- Surname\n3- Name & Surname\n4- Phone number")
-    option = input()
-    if option.strip() == '1':
+    option = input().strip()
+    if option == '1':
       name = input("Name: ")
       query = {"name": name}
-    elif option.strip() == '2':
+    elif option == '2':
       surname = input("Surname: ")
       query = {"surname": surname}
-    elif option.strip() == '3':
+    elif option == '3':
       name = input("Name: ")
       surname = input("Surname: ")
       query = {
         "name": name,
         "surname": surname
       }
-    elif option.strip() == '4':
+    elif option == '4':
       phone_number = input("Phone number: ")
       query = {"number": phone_number}
 
@@ -162,16 +120,18 @@ class contactBook:
     except:
       print("Something went wrong on modify contact func")
 
+contact = ContactBook()
+
 while True:
-  option = contactBook().menu()
+  option = contact.menu()
   if option == '1':
-    contactBook().search_contact()
+    contact.search_contact()
   elif option == '2':
-    contactBook().add_contact()
+    contact.add_contact()
   elif option == '3':
-    contactBook().modify_contact()
+    contact.modify_contact()
   elif option == '4':
-    contactBook().remove_contact()
+    contact.remove_contact()
   elif option == '5':
     print("Exiting the program")
     break
