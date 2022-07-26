@@ -139,3 +139,5 @@ while True:
   elif option == '5':
     print("Exiting the program")
     break
+  elif int(option) < 1 or int(option) > 5:
+    raise InvalidOption(f"There's no {option} number option avaible!")
