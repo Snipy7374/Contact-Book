@@ -1,7 +1,7 @@
 # Contact book project
+from .my_database import MyDatabase
 
 db = MyDatabase("ContactBook", "Contact")
-
 
 class ContactBook:
   def __init__(self):
